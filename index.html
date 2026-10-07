@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Massage Menu 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="hearts"></div>
+
+<section id="login" class="screen active">
+  <div class="box">
+    <h1 class="script">Massage Menu</h1>
+    <p class="sub" id="login-sub">Enter your name and secret PIN 💕</p>
+    <input id="name" placeholder="Your name" autocomplete="off">
+    <input id="pin" placeholder="PIN (4 digits)" type="password" inputmode="numeric" maxlength="4">
+    <button class="btn" onclick="enter()">Enter</button>
+    <p id="msg" class="err"></p>
+  </div>
+</section>
+
+<section id="menu" class="screen">
+  <header><h2 class="script" id="hello"></h2>
+    <div><button class="btn small" id="adminBtn" onclick="openAdmin()" style="display:none">👑 Admin</button>
+    <button class="btn small ghost" onclick="logout()">Exit</button></div></header>
+  <div class="stats"><span>💖 Hearts <b id="hearts-n">0</b></span><span>🎁 Next gift in <b id="gift-n">5</b></span></div>
+  <div class="tabs"><button class="tab on" onclick="tab('massages',this)">Massages</button>
+    <button class="tab" onclick="tab('quests',this)">Quests</button>
+    <button class="tab" onclick="tab('history',this)">History</button></div>
+  <div id="list" class="grid"></div>
+</section>
+
+<section id="admin" class="screen">
+  <header><h2 class="script">Admin 👑</h2><button class="btn small ghost" onclick="show('menu')">Back</button></header>
+  <button class="btn" onclick="makeInvite()">➕ Create invite link</button>
+  <p id="invite-out" class="sub"></p>
+  <h3>Requests</h3><div id="reqs"></div>
+  <h3>People</h3><div id="users"></div>
+</section>
+
+<div id="modal" class="modal"><div class="mbox">
+  <span class="x" onclick="$('modal').classList.remove('active')">×</span>
+  <h2 id="m-title" class="script"></h2><p id="m-desc"></p>
+  <div id="m-opts"></div>
+  <p>Total: <b id="m-cost"></b></p>
+  <button class="btn" onclick="confirmOrder()">I want it 💕</button>
+</div></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
